@@ -7,14 +7,15 @@
 </template>
 
 <script>
-import { Input, FormItem } from "@formily/antdv";
+import { Input, Select, FormItem } from "@formily/antdv";
 import { FormProvider, createSchemaField } from "@formily/vue";
 import { createForm } from "@formily/core";
 
 const { SchemaField } = createSchemaField({
   components: {
     Input,
-    FormItem
+    Select,
+    FormItem,
   },
 });
 
@@ -29,7 +30,7 @@ export default {
     const schema = {
       type: "object",
       properties: {
-        Input: {
+        input: {
           type: "string",
           title: "Input",
           "x-decorator": "FormItem",
@@ -37,12 +38,35 @@ export default {
           "x-validator": [],
           "x-component-props": {},
           "x-decorator-props": {},
-          name: "Input",
-          "x-designable-id": "8zq561r4ebq",
+          "x-designable-id": "8rcvroraxyu",
           "x-index": 0,
+          name: "input",
+        },
+        select: {
+          title: "Select",
+          "x-decorator": "FormItem",
+          "x-component": "Select",
+          "x-validator": [],
+          "x-component-props": {},
+          "x-decorator-props": {},
+          enum: [
+            {
+              children: [],
+              label: "选项 1",
+              value: "1",
+            },
+            {
+              children: [],
+              label: "选项 2",
+              value: "2",
+            },
+          ],
+          "x-designable-id": "qpnczwtd4we",
+          "x-index": 1,
+          name: "select",
         },
       },
-      "x-designable-id": "83u6b8yund8",
+      "x-designable-id": "rnvse6w4fyl",
     };
     return {
       form,
@@ -51,7 +75,8 @@ export default {
   },
   mounted() {
     this.form.setValues({
-      Input: 123
+      input: '123',
+      select: '1'
     });
   },
 };
